@@ -43,7 +43,7 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
                             <Link href={renderLink()} className="font-semibold font-mukta text-base text-gray-100/100">{projectDetails?.createdBy?.name}</Link>
                             <div className="border-l-2 text-gray/100"></div>
                             <Link
-                                href={`/?category=${projectDetails?.category}`}
+                                href={projectDetails?.category ? `/?category=${projectDetails?.category}` : '/'}
                                 className="text-orange-500 font-semibold"
                             >
                                 <span className="text-gray-100/95 font-mukta">Category: </span>
