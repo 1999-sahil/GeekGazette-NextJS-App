@@ -43,7 +43,7 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
                             <Link href={renderLink()} className="font-semibold font-mukta text-base text-gray-100/100">{projectDetails?.createdBy?.name}</Link>
                             <div className="border-l-2 text-gray/100"></div>
                             <Link
-                                href={`/?category=${projectDetails.category}`}
+                                href={`/?category=${projectDetails?.category}`}
                                 className="text-orange-500 font-semibold"
                             >
                                 <span className="text-gray-100/95 font-mukta">Category: </span>
@@ -81,7 +81,7 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
 
                 <div className="flex flex-wrap mt-5 gap-5">
                     <Link
-                        href={projectDetails?.githubUrl}
+                        href={projectDetails?.githubUrl ?? '/'}
                         target="_blank"
                         rel="noreferrer"
                         className="flexCenter gap-2 tex-sm font-medium text-orange-500"
@@ -90,7 +90,7 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
                     </Link>
                     <Image src="/dot.svg" width={4} height={4} alt="dot" />
                     <Link
-                        href={projectDetails?.liveSiteUrl}
+                        href={projectDetails?.liveSiteUrl ?? '/'}
                         target="_blank"
                         rel="noreferrer"
                         className="flexCenter gap-2 tex-sm font-medium text-orange-500"
@@ -105,7 +105,7 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
                 <span className="w-full h-0.5 bg-light-white-200" />
                 <Link href={renderLink()} className="min-w-[82px] h-[82px]">
                     <Image
-                        src={projectDetails?.createdBy?.avatarUrl}
+                        src={projectDetails?.createdBy?.avatarUrl || 'default-avatar-url'}
                         className="rounded-full"
                         width={82}
                         height={82}
@@ -117,8 +117,8 @@ const Project = async ({ params: { id } }: { params : { id: string }}) => {
             </section>
 
             <RelatedProjects
-                userId={projectDetails?.createdBy?.id}
-                projectId={projectDetails?.id}
+                userId={projectDetails?.createdBy?.id ?? '/'}
+                projectId={projectDetails?.id ?? '/'}
             />
         </>
     )
